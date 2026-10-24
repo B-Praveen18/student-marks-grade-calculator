@@ -35,3 +35,16 @@ def calculate_grade(percent):
         return "B"
     else:
         return "U"
+
+def calculate_gpa(grade_points):
+    """
+    Calculate GPA from a list of grade points.
+    Assumes all subjects have equal credit weight.
+    """
+    if len(grade_points) == 0:
+        raise ValueError("Grade points list cannot be empty.")
+
+    if any(point < 0 or point > 10 for point in grade_points):
+        raise ValueError("Grade points must be between 0 and 10.")
+
+    return round(sum(grade_points) / len(grade_points), 2)
